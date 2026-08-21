@@ -42,11 +42,10 @@ class CrafterNavigationEnv(gym.Env):
 
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
-        if seed is not None:
-            self.env.reset(seed=seed)
-        else:
-            self.env.reset()
-            
+        
+        # Reset internal Crafter engine without passing seed directly
+        self.env.reset()
+        
         self.current_step = 0
         agent_pos = self._get_agent_pos()
         
@@ -61,12 +60,12 @@ class CrafterNavigationEnv(gym.Env):
         # Map sub-action index to actual Crafter action enum
         mapped_action = self.active_actions[action_idx]
         
-        prev_dist = np.linalg_norm(self._get_obs())
+        prev_dist = np.linalg.norm(self._get_obs())
         
         # Execute action in Crafter engine
         _, reward_crafter, done, info = self.env.step(mapped_action)
         
-        curr_dist = np.linalg_norm(self._get_obs())
+        curr_dist = np.linalg.norm(self._get_obs())
         
         # Distance-reduction reward + sparse completion bonus
         r_t = (prev_dist - curr_dist)
