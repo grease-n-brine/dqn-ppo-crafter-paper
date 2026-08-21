@@ -1,2 +1,2 @@
-# dqn-ppo-minecraft-paper
-Evaluating Value-Based and Policy-Gradient Deep Reinforcement Learning Under Increasing Action-Space Complexity: A Minecraft Navigation Study
+# dqn-ppo-crafter-paper
+Evaluating Value-Based and Policy-Gradient Deep Reinforcement Learning Under Increasing Action-Space Complexity: A Crafter Navigation Study
